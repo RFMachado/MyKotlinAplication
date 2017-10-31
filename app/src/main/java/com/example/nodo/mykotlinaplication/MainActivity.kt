@@ -8,12 +8,13 @@ import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.ProgressBar
+import android.widget.*
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.example.nodo.mykotlinaplication.entities.Repositories
+import com.example.nodo.mykotlinaplication.MyAdapter
+import com.example.nodo.mykotlinaplication.MyApplication
+import com.example.nodo.mykotlinaplication.R
+import com.example.nodo.mykotlinaplication.RepositoryInterface
 import com.example.nodo.mykotlinaplication.entities.Repository
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
@@ -32,6 +33,12 @@ class MainActivity : AppCompatActivity() {
 
     @BindView(R.id.loading)
     lateinit var progressBar : ProgressBar
+
+    @BindView(R.id.imageView)
+    lateinit var imageView : ImageView
+
+    @BindView(R.id.textview_main)
+    lateinit var textView : TextView
 
     @Inject
     lateinit var repositoryInterface : RepositoryInterface
@@ -59,11 +66,11 @@ class MainActivity : AppCompatActivity() {
                         Observable.empty<Any>()
                     }
 
-                    showLoading()
+
                     repositoryInterface.getRepos(text.toString())
                             .onErrorResumeNext(Observable.empty())
                             .flatMapIterable { it.items }
-                            .toSortedList({ a, b -> a.owner.login.compareTo(b.owner.login) }
+                            .toSortedList({ a, b -> a.owner.login.compareTo(b.owner.login)}
                             )
                             .toObservable()
                             .subscribeOn(Schedulers.io())
@@ -72,7 +79,6 @@ class MainActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { data ->
-                            hideLoading()
                             adapter.repositories = data
                             adapter.notifyDataSetChanged()
                         },
@@ -83,20 +89,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun hideLoading() {
-        progressBar.setVisibility(View.GONE)
-        recyclerView.setVisibility(View.VISIBLE)
-    }
-
-    private fun showLoading() {
-        recyclerView.setVisibility(View.GONE)
-        progressBar.visibility = View.VISIBLE
-        closeInput(editText)
-    }
-
     private fun showEmptyState() {
-        recyclerView.setVisibility(View.GONE)
+        recyclerView.setVisibility(View.VISIBLE)
         progressBar.visibility = View.GONE
+        closeInput(editText)
     }
 
     fun closeInput(caller: View?) {

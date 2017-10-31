@@ -59,9 +59,9 @@ class MyAdapter (var repositories: List<Repository>) : RecyclerView.Adapter<MyAd
     class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindItems(repositories: List<Repository>) {
-            val id = itemView.login
-            val login = itemView.id_rv
-            val avatarurl = itemView.avatar_url
+            itemView.login
+            itemView.id_rv
+            itemView.avatar_url
 
         }
 
