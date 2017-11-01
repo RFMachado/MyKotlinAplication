@@ -1,4 +1,4 @@
-package com.example.nodo.mykotlinaplication.entities
+package com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities
 
 
 import com.google.gson.annotations.SerializedName
@@ -8,7 +8,7 @@ import java.io.Serializable
  * Created by nodo on 28/09/17.
  */
 
-class Repository : Serializable {
+class RepositoryPayload : Serializable {
 
      @SerializedName("name")
     lateinit var name: String
@@ -17,6 +17,6 @@ class Repository : Serializable {
     lateinit var url: String
 
     @SerializedName("owner")
-    lateinit var owner: Owner
+    lateinit var owner: OwnerPayload
 
 }

@@ -1,22 +1,21 @@
-package com.example.nodo.mykotlinaplication
+package com.example.nodo.mykotlinaplication.feature.search.ui
 
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.nodo.mykotlinaplication.entities.Repository
+import com.example.nodo.mykotlinaplication.feature.detail.DetailActivity
+import com.example.nodo.mykotlinaplication.R
+import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
 import kotlinx.android.synthetic.main.line_recyclerview.view.*
-import java.io.Serializable
 
 
 /**
  * Created by nodo on 24/10/17.
  */
-class MyAdapter (var repositories: List<Repository>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class SearchAdapter(var repositories: List<Repository>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,12 +31,12 @@ class MyAdapter (var repositories: List<Repository>) : RecyclerView.Adapter<MyAd
 
 
         holder.itemView.apply {
-            login.text = repository.owner.id
-            id_rv.text = repository.owner.login
+            login.text = repository.id
+            id_rv.text = repository.login
         }
 
         Glide.with(context)
-                .load(repository.owner.avatarUrl)
+                .load(repository.avatarUrl)
                 .apply(RequestOptions.circleCropTransform())  //Crop sobre a imagem
                 .into(holder.itemView.avatar_url)
 
@@ -46,8 +45,6 @@ class MyAdapter (var repositories: List<Repository>) : RecyclerView.Adapter<MyAd
             val intent = DetailActivity.launchIntent(context, repository)
             context.startActivity(intent)
         }
-
-        holder.bindItems(repositories)
     }
 
 
@@ -55,16 +52,6 @@ class MyAdapter (var repositories: List<Repository>) : RecyclerView.Adapter<MyAd
         return repositories.size
     }
 
-
-    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bindItems(repositories: List<Repository>) {
-            itemView.login
-            itemView.id_rv
-            itemView.avatar_url
-
-        }
-
-    }
+    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView)
 
 }

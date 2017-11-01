@@ -5,7 +5,7 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nodo.mykotlinaplication.MainActivity"
+    tools:context=".feature.search.ui.SearchActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -28,6 +28,13 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:id="@+id/rv">
+
+        </android.support.v7.widget.RecyclerView>
 
         <ProgressBar
             android:layout_width="wrap_content"
@@ -61,13 +68,7 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            android:id="@+id/rv">
 
-        </android.support.v7.widget.RecyclerView>
 
 
     </FrameLayout>

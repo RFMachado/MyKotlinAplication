@@ -1,4 +1,4 @@
-package com.example.nodo.mykotlinaplication.entities
+package com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
@@ -6,7 +6,7 @@ import java.io.Serializable
 /**
  * Created by nodo on 27/10/17.
  */
-class Download : Serializable{
+class DownloadPayload : Serializable{
 
     @SerializedName("download_url")
     lateinit var urldonwload: String

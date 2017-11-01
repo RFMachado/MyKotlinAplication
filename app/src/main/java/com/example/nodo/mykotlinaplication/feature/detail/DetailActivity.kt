@@ -1,4 +1,4 @@
-package com.example.nodo.mykotlinaplication
+package com.example.nodo.mykotlinaplication.feature.detail
 
 import android.content.Context
 import android.content.Intent
@@ -9,11 +9,14 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
-import com.example.nodo.mykotlinaplication.entities.Download
-import com.example.nodo.mykotlinaplication.entities.Repository
+import com.example.nodo.mykotlinaplication.MyApplication
+import com.example.nodo.mykotlinaplication.R
+import com.example.nodo.mykotlinaplication.RepositoryInterface
+import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
+import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.DownloadPayload
+import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.RepositoryPayload
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import us.feras.mdv.MarkdownView
 import javax.inject.Inject
@@ -32,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
     @Inject
     lateinit var repositoryInterface : RepositoryInterface
 
-    lateinit var repository : Repository
+    lateinit var repository: Repository
 
     internal var compositeDisposable = CompositeDisposable()
 
@@ -55,12 +58,11 @@ class DetailActivity : AppCompatActivity() {
         repository = intent.getSerializableExtra(EXTRA_DOWNLOAD) as Repository
 
         val disposable = repositoryInterface
-                .getDownload(repository.owner.login, repository.name)
+                .getDownload(repository.login, repository.name)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ data ->
-                    val download : Download = data
-                    markdownView.loadMarkdownFile(download.urldonwload)
+                .subscribe({
+                    markdownView.loadMarkdownFile(it.urldonwload)
                     progressBar.setVisibility(View.GONE)
                     markdownView.visibility = View.VISIBLE
 
