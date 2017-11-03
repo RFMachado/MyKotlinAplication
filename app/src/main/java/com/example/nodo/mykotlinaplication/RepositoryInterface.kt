@@ -12,7 +12,7 @@ import retrofit2.http.Query
  */
 interface RepositoryInterface {
 
-    @GET("search/repositoryPayloads")
+    @GET("search/repositories")
     fun getRepos(@Query("q") sort: String): Observable<RepositoriesPayload>
 
     @GET("repos/{first}/{second}/readme")

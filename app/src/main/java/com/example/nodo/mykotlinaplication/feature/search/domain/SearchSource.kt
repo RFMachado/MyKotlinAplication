@@ -1,5 +1,6 @@
 package com.example.nodo.mykotlinaplication.feature.search.domain
 
+import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Download
 import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
 import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.RepositoryPayload
 import io.reactivex.Observable
@@ -9,4 +10,6 @@ import io.reactivex.Observable
  */
 interface SearchSource {
     fun fetchRepositories(text: String): Observable<List<Repository>>
+
+    fun fetchDownload (login : String, name : String) : Observable<Download>
 }

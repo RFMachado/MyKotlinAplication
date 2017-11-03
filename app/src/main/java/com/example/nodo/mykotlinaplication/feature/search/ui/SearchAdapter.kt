@@ -29,7 +29,6 @@ class SearchAdapter(var repositories: List<Repository>) : RecyclerView.Adapter<S
         val repository = repositories[position]
         val context = holder.itemView.context
 
-
         holder.itemView.apply {
             login.text = repository.id
             id_rv.text = repository.login

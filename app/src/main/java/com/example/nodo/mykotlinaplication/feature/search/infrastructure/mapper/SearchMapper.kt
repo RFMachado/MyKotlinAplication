@@ -1,6 +1,8 @@
 package com.example.nodo.mykotlinaplication.feature.search.infrastructure.mapper
 
+import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Download
 import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
+import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.DownloadPayload
 import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.RepositoryPayload
 
 /**
