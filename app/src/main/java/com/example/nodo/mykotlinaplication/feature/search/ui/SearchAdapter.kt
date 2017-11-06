@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.nodo.mykotlinaplication.feature.detail.DetailActivity
+import com.example.nodo.mykotlinaplication.feature.detail.ui.DownloadActivity
 import com.example.nodo.mykotlinaplication.R
 import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
 import kotlinx.android.synthetic.main.line_recyclerview.view.*
@@ -41,7 +41,7 @@ class SearchAdapter(var repositories: List<Repository>) : RecyclerView.Adapter<S
 
 
         holder.itemView.setOnClickListener {
-            val intent = DetailActivity.launchIntent(context, repository)
+            val intent = DownloadActivity.launchIntent(context, repository)
             context.startActivity(intent)
         }
     }

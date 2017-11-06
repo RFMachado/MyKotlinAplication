@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".feature.detail.DetailActivity"></activity>
+        <activity android:name=".feature.detail.ui.DownloadActivity"></activity>
 
     </application>
 

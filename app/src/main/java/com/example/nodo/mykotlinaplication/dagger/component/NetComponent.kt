@@ -1,6 +1,6 @@
 package com.example.nodo.mykotlinaplication.dagger.component
 
-import com.example.nodo.mykotlinaplication.feature.detail.DetailActivity
+import com.example.nodo.mykotlinaplication.feature.detail.ui.DownloadActivity
 import com.example.nodo.mykotlinaplication.feature.search.ui.SearchActivity
 import com.example.nodo.mykotlinaplication.dagger.module.AppModule
 import com.example.nodo.mykotlinaplication.dagger.module.NetModule
@@ -20,5 +20,5 @@ import javax.inject.Singleton
 interface NetComponent {
 
     fun inject(activity: SearchActivity)
-    fun inject(activity: DetailActivity)
+    fun inject(activity: DownloadActivity)
 }

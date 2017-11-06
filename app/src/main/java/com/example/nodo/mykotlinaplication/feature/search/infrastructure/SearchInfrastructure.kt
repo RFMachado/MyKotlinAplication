@@ -2,9 +2,9 @@ package com.example.nodo.mykotlinaplication.feature.search.infrastructure
 
 import com.example.nodo.mykotlinaplication.RepositoryInterface
 import com.example.nodo.mykotlinaplication.feature.search.domain.SearchSource
-import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Download
+import com.example.nodo.mykotlinaplication.feature.detail.domain.entities.Download
 import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
-import com.example.nodo.mykotlinaplication.feature.search.infrastructure.mapper.DownloadMapper
+import com.example.nodo.mykotlinaplication.feature.detail.infrastructure.mapper.DownloadMapper
 import com.example.nodo.mykotlinaplication.feature.search.infrastructure.mapper.SearchMapper
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -19,9 +19,6 @@ class SearchInfrastructure @Inject constructor(private val source: RepositoryInt
                 .map { SearchMapper.map(it.items!!)}
     }
 
-     override fun fetchDownload(str: String ,str2: String) : Observable<Download>{
-        return source.getDownload(str, str2)
-                .map { DownloadMapper.map(it) }
-    }
+
 
 }

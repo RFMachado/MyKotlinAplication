@@ -2,6 +2,7 @@ package com.example.nodo.mykotlinaplication.dagger.module
 
 import android.app.Application
 import com.example.nodo.mykotlinaplication.RepositoryInterface
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Cache
 
 import com.google.gson.FieldNamingPolicy
@@ -13,13 +14,14 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 /**
  * Created by nodo on 25/10/17.
  */
 @Module
-class NetModule(var mBaseUrl: String) {
+class NetModule(val mBaseUrl: String) {
 
 
     @Provides
@@ -40,17 +42,19 @@ class NetModule(var mBaseUrl: String) {
     @Provides
     @Singleton
     fun provideOkhttpClient(cache: Cache): OkHttpClient {
-        val client = OkHttpClient.Builder()
-        client.cache(cache)
-        return client.build()
+        return OkHttpClient.Builder()
+                .cache(cache)
+                //.addNetworkInterceptor(StethoInterceptor())
+                .build()
     }
 
     @Provides
     @Singleton
     fun provideRetrofit(gson: Gson, okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(mBaseUrl)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build()

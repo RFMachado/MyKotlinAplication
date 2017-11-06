@@ -1,4 +1,4 @@
-package com.example.nodo.mykotlinaplication.feature.search.domain.entities
+package com.example.nodo.mykotlinaplication.feature.detail.domain.entities
 
 import java.io.Serializable
 

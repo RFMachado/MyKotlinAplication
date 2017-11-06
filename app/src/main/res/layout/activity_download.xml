@@ -5,7 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.nodo.mykotlinaplication.feature.detail.DetailActivity">
+    tools:context="com.example.nodo.mykotlinaplication.feature.detail.ui.DownloadActivity">
+
+    <us.feras.mdv.MarkdownView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/mark_down"/>
 
     <ProgressBar
         android:layout_width="wrap_content"
@@ -15,12 +20,5 @@
         android:visibility="visible"
         />
 
-    <us.feras.mdv.MarkdownView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/mark_down"
-        android:visibility="gone">
-
-    </us.feras.mdv.MarkdownView>
 
 </FrameLayout>
