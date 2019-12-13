@@ -12,11 +12,7 @@ import javax.inject.Singleton
  * Created by nodo on 25/10/17.
  */
 @Singleton
-@Component(modules = arrayOf(
-        AppModule::class,
-        NetModule::class,
-        SearchRepositoryModule::class
-))
+@Component(modules = [AppModule::class, NetModule::class, SearchRepositoryModule::class])
 interface NetComponent {
 
     fun inject(activity: SearchActivity)

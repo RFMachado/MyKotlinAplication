@@ -1,6 +1,6 @@
 package com.example.nodo.mykotlinaplication.feature.detail.infrastructure.mapper
 
-import com.example.nodo.mykotlinaplication.entities.DownloadPayload
+import com.example.nodo.mykotlinaplication.feature.detail.infrastructure.entities.DownloadPayload
 import com.example.nodo.mykotlinaplication.feature.detail.domain.entities.Download
 
 /**

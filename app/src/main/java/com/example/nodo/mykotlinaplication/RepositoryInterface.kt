@@ -1,6 +1,6 @@
 package com.example.nodo.mykotlinaplication
 
-import com.example.nodo.mykotlinaplication.entities.DownloadPayload
+import com.example.nodo.mykotlinaplication.feature.detail.infrastructure.entities.DownloadPayload
 import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.RepositoriesPayload
 import io.reactivex.Observable
 import retrofit2.http.GET

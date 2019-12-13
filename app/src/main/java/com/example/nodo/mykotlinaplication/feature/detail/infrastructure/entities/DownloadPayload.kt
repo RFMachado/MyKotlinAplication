@@ -1,4 +1,4 @@
-package com.example.nodo.mykotlinaplication.entities
+package com.example.nodo.mykotlinaplication.feature.detail.infrastructure.entities
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable

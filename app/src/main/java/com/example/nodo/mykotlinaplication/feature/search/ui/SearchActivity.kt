@@ -1,7 +1,6 @@
 package com.example.nodo.mykotlinaplication.feature.search.ui
 
 import android.os.Bundle
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nodo.mykotlinaplication.MyApplication
@@ -18,7 +17,7 @@ import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity(), SearchView {
 
-    var items = ArrayList<Repository>()
+    private var items = ArrayList<Repository>()
 
     @Inject
     lateinit var presenter: SearchPresenter
@@ -34,7 +33,7 @@ class SearchActivity : AppCompatActivity(), SearchView {
 
         RxTextView.textChanges(editText)
                 .debounce(500, TimeUnit.MILLISECONDS)
-                .subscribe({ presenter.fetchRepositories(it.toString()) })
+                .subscribe { presenter.fetchRepositories(it.toString()) }
     }
 
     override fun hideLoading() {
