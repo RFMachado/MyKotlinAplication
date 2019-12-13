@@ -1,48 +1,31 @@
 package com.example.nodo.mykotlinaplication
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.TextUtils
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import butterknife.BindView
-import butterknife.ButterKnife
-import com.example.nodo.mykotlinaplication.entities.Repositories
 import com.example.nodo.mykotlinaplication.entities.Repository
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-    @BindView(R.id.rv)
-    lateinit var recyclerView : RecyclerView
-
-    @BindView(R.id.edittext)
-    lateinit var editText : EditText
-
-    @BindView(R.id.loading)
-    lateinit var progressBar : ProgressBar
-
     @Inject
-    lateinit var repositoryInterface : RepositoryInterface
+    lateinit var repositoryInterface: RepositoryInterface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         MyApplication.netComponent.inject(this)
-
-        ButterKnife.bind(this)
 
         var items: List<Repository> = ArrayList()
 
@@ -79,24 +62,23 @@ class MainActivity : AppCompatActivity() {
                         { it.printStackTrace() }
                 )
 
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
-
+        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     private fun hideLoading() {
-        progressBar.setVisibility(View.GONE)
+        loading.setVisibility(View.GONE)
         recyclerView.setVisibility(View.VISIBLE)
     }
 
     private fun showLoading() {
         recyclerView.setVisibility(View.GONE)
-        progressBar.visibility = View.VISIBLE
+        loading.visibility = View.VISIBLE
         closeInput(editText)
     }
 
     private fun showEmptyState() {
         recyclerView.setVisibility(View.GONE)
-        progressBar.visibility = View.GONE
+        loading.visibility = View.GONE
     }
 
     fun closeInput(caller: View?) {
@@ -106,14 +88,11 @@ class MainActivity : AppCompatActivity() {
         caller.postDelayed({
             val imm = caller.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(caller.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-
         }, 500)
-
     }
 
     override fun onPause() {
         super.onPause()
         editText.setText("")
     }
-
 }

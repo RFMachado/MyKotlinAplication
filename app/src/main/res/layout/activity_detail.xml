@@ -11,15 +11,12 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:id="@+id/progress_md"
-        />
+        android:id="@+id/progress_md" />
 
     <us.feras.mdv.MarkdownView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/mark_down"
-        android:visibility="gone">
-
-    </us.feras.mdv.MarkdownView>
+        android:visibility="gone"/>
 
 </FrameLayout>

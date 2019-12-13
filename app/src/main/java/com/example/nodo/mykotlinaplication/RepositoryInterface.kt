@@ -17,5 +17,4 @@ interface RepositoryInterface {
 
     @GET("repos/{first}/{second}/readme")
     fun getDownload(@Path("first") first: String, @Path("second") second: String): Observable<Download>
-
 }

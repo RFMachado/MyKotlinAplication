@@ -3,19 +3,15 @@ package com.example.nodo.mykotlinaplication
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.example.nodo.mykotlinaplication.entities.Download
 import com.example.nodo.mykotlinaplication.entities.Repository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import us.feras.mdv.MarkdownView
+import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
 
 /**
@@ -23,16 +19,10 @@ import javax.inject.Inject
  */
 class DetailActivity : AppCompatActivity() {
 
-    @BindView(R.id.mark_down)
-    lateinit var markdownView: MarkdownView
-
-    @BindView(R.id.progress_md)
-    lateinit var progressBar : ProgressBar
-
     @Inject
-    lateinit var repositoryInterface : RepositoryInterface
+    lateinit var repositoryInterface: RepositoryInterface
 
-    lateinit var repository : Repository
+    lateinit var repository: Repository
 
     internal var compositeDisposable = CompositeDisposable()
 
@@ -50,8 +40,6 @@ class DetailActivity : AppCompatActivity() {
 
         MyApplication.netComponent.inject(this)
 
-        ButterKnife.bind(this)
-
         repository = intent.getSerializableExtra(EXTRA_DOWNLOAD) as Repository
 
         val disposable = repositoryInterface
@@ -59,11 +47,10 @@ class DetailActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ data ->
-                    val download : Download = data
-                    markdownView.loadMarkdownFile(download.urldonwload)
-                    progressBar.setVisibility(View.GONE)
-                    markdownView.visibility = View.VISIBLE
-
+                    val download: Download = data
+                    mark_down.loadMarkdownFile(download.urldonwload)
+                    progress_md.setVisibility(View.GONE)
+                    mark_down.visibility = View.VISIBLE
                 },
                         {
                             Toast.makeText(this, "No text", Toast.LENGTH_SHORT).show()
@@ -72,12 +59,10 @@ class DetailActivity : AppCompatActivity() {
                         })
 
         compositeDisposable.add(disposable)
-
     }
 
     override fun onDestroy() {
         compositeDisposable.clear()
         super.onDestroy()
     }
-
 }

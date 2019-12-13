@@ -8,7 +8,6 @@ import java.io.Serializable
  */
 
 class Repositories : Serializable {
-
-     @SerializedName("items")
+    @SerializedName("items")
     var items: List<Repository>? = null
 }

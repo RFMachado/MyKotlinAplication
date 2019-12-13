@@ -15,7 +15,6 @@ class MyApplication : Application() {
         lateinit var netComponent: NetComponent
     }
 
-
     override fun onCreate() {
         super.onCreate()
 
@@ -23,7 +22,5 @@ class MyApplication : Application() {
                 .netModule(NetModule("https://api.github.com/"))
                 .appModule(AppModule(this))
                 .build()
-
     }
 }
-
