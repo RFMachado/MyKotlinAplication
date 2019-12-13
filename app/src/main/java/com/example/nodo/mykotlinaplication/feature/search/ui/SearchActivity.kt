@@ -1,12 +1,9 @@
 package com.example.nodo.mykotlinaplication.feature.search.ui
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.widget.*
-import butterknife.BindView
-import butterknife.ButterKnife
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nodo.mykotlinaplication.MyApplication
 import com.example.nodo.mykotlinaplication.R
 import com.example.nodo.mykotlinaplication.Utils.Extensions.hide
@@ -16,19 +13,11 @@ import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entitie
 import com.example.nodo.mykotlinaplication.feature.search.presentation.SearchPresenter
 import com.example.nodo.mykotlinaplication.feature.search.presentation.SearchView
 import com.jakewharton.rxbinding2.widget.RxTextView
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 class SearchActivity : AppCompatActivity(), SearchView {
-
-    @BindView(R.id.rv)
-    lateinit var recyclerView : RecyclerView
-
-    @BindView(R.id.edittext)
-    lateinit var editText : EditText
-
-    @BindView(R.id.loading)
-    lateinit var loading : ProgressBar
 
     var items = ArrayList<Repository>()
 
@@ -40,8 +29,6 @@ class SearchActivity : AppCompatActivity(), SearchView {
         setContentView(R.layout.activity_main)
 
         MyApplication.netComponent.inject(this)
-
-        ButterKnife.bind(this)
         presenter.bind(this)
 
         setupRecycler()
@@ -61,7 +48,7 @@ class SearchActivity : AppCompatActivity(), SearchView {
 
     override fun showResult(repositories: List<Repository>) {
         items.addAll(repositories)
-        recyclerView.adapter.notifyDataSetChanged()
+        recyclerView.adapter?.notifyDataSetChanged()
     }
 
     override fun showError(throwable: Throwable) {

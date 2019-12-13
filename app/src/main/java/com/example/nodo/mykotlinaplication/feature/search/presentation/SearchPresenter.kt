@@ -3,7 +3,6 @@ package com.example.nodo.mykotlinaplication.feature.search.presentation
 import com.example.nodo.mykotlinaplication.Utils.RxUtils
 import com.example.nodo.mykotlinaplication.feature.search.domain.SearchSource
 import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
-import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.RepositoryPayload
 import com.example.nodo.mykotlinaplication.feature.shared.LoadingContent
 import com.example.nodo.mykotlinaplication.feature.shared.ReactivePresenter
 import io.reactivex.Observable

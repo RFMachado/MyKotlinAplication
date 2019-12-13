@@ -24,6 +24,8 @@
 
         <activity android:name=".feature.detail.ui.DownloadActivity"></activity>
 
+        <activity android:name=".DetailActivity"/>
+
     </application>
 
 </manifest>
