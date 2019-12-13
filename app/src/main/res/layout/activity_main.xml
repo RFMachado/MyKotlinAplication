@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawablePadding="4dp"
-            android:id="@+id/edittext"
+            android:id="@+id/editText"
             android:imeOptions="actionSearch"
             android:inputType="text"/>
 
@@ -28,13 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible"
-            android:id="@+id/rv">
-
-        </android.support.v7.widget.RecyclerView>
+            android:id="@+id/recyclerView"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
@@ -72,7 +70,5 @@
 
 
     </FrameLayout>
-
-
 
 </LinearLayout>

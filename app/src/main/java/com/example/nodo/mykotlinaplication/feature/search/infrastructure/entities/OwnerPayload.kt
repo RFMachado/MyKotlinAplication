@@ -12,11 +12,9 @@ class OwnerPayload : Serializable {
     @SerializedName("login")
     lateinit var login: String
 
-
     @SerializedName("avatar_url")
     lateinit var avatarUrl: String
 
     @SerializedName("id")
     lateinit var id: String
-
 }

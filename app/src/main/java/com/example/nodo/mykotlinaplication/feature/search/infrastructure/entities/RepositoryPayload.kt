@@ -10,13 +10,12 @@ import java.io.Serializable
 
 class RepositoryPayload : Serializable {
 
-     @SerializedName("name")
+    @SerializedName("name")
     lateinit var name: String
 
-     @SerializedName("url")
+    @SerializedName("url")
     lateinit var url: String
 
     @SerializedName("owner")
     lateinit var owner: OwnerPayload
-
 }

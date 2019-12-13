@@ -1,6 +1,6 @@
 package com.example.nodo.mykotlinaplication.feature.search.ui
 
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +15,7 @@ import kotlinx.android.synthetic.main.line_recyclerview.view.*
 /**
  * Created by nodo on 24/10/17.
  */
-class SearchAdapter(var repositories: List<Repository>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
-
+class SearchAdapter(var repositories: List<Repository>) : androidx.recyclerview.widget.RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.line_recyclerview, parent, false)
@@ -29,6 +28,7 @@ class SearchAdapter(var repositories: List<Repository>) : RecyclerView.Adapter<S
         val repository = repositories[position]
         val context = holder.itemView.context
 
+
         holder.itemView.apply {
             login.text = repository.id
             id_rv.text = repository.login
@@ -36,7 +36,7 @@ class SearchAdapter(var repositories: List<Repository>) : RecyclerView.Adapter<S
 
         Glide.with(context)
                 .load(repository.avatarUrl)
-                .apply(RequestOptions.circleCropTransform())  //Crop sobre a imagem
+                .apply(RequestOptions.circleCropTransform()) // Crop sobre a imagem
                 .into(holder.itemView.avatar_url)
 
 
@@ -46,11 +46,9 @@ class SearchAdapter(var repositories: List<Repository>) : RecyclerView.Adapter<S
         }
     }
 
-
     override fun getItemCount(): Int {
         return repositories.size
     }
 
-    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView)
-
+    class ViewHolder (itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView)
 }

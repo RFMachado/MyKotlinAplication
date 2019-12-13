@@ -23,7 +23,6 @@ import javax.inject.Singleton
 @Module
 class NetModule(val mBaseUrl: String) {
 
-
     @Provides
     @Singleton
     fun provideHttpCache(application: Application): Cache {
