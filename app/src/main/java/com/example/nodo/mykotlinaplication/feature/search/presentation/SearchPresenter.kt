@@ -16,9 +16,8 @@ class SearchPresenter @Inject constructor(private val source: SearchSource) : Re
 
     private val loadingContent = LoadingContent<List<Repository>>()
 
-     override fun bind(view: SearchView) {
+    override fun bind(view: SearchView) {
         super.bind(view)
-
         disposables += loadingContent.bind(view)
     }
 
@@ -26,14 +25,12 @@ class SearchPresenter @Inject constructor(private val source: SearchSource) : Re
         disposables += source.fetchRepositories(text)
                 .onErrorResumeNext(Observable.empty())
                 .flatMapIterable { it }
-                .toSortedList { a, b -> a.login.compareTo(b.login)}
+                .toSortedList { a, b -> a.login.compareTo(b.login) }
                 .compose(RxUtils.applySingleSchedulers())
-                .compose (loadingContent)
+                .compose(loadingContent)
                 .subscribe(
                         { view?.showResult(it) },
                         { view?.showError(it) }
                 )
-
     }
-
 }

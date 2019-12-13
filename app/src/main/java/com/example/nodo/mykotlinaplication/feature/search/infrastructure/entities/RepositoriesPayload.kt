@@ -9,6 +9,6 @@ import java.io.Serializable
 
 class RepositoriesPayload : Serializable {
 
-     @SerializedName("items")
+    @SerializedName("items")
     var items: List<RepositoryPayload>? = null
 }

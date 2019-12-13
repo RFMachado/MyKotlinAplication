@@ -2,7 +2,6 @@ package com.example.nodo.mykotlinaplication.dagger.module
 
 import android.app.Application
 import com.example.nodo.mykotlinaplication.RepositoryInterface
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.Cache
 
 import com.google.gson.FieldNamingPolicy
@@ -43,7 +42,7 @@ class NetModule(val mBaseUrl: String) {
     fun provideOkhttpClient(cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
                 .cache(cache)
-                //.addNetworkInterceptor(StethoInterceptor())
+                // .addNetworkInterceptor(StethoInterceptor())
                 .build()
     }
 

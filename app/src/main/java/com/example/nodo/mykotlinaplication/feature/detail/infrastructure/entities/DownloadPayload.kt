@@ -10,5 +10,4 @@ class DownloadPayload : Serializable {
 
     @SerializedName("download_url")
     lateinit var urldonwload: String
-
 }

@@ -8,7 +8,7 @@ import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entitie
  */
 object SearchMapper {
 
-    fun map(payload: RepositoryPayload) = Repository().apply{
+    fun map(payload: RepositoryPayload) = Repository().apply {
 
         id = payload.owner.id
         login = payload.owner.login
@@ -16,6 +16,5 @@ object SearchMapper {
         name = payload.name
     }
 
-    fun map(payloads : List<RepositoryPayload>) = payloads.map { map(it) }
-
+    fun map(payloads: List<RepositoryPayload>) = payloads.map { map(it) }
 }

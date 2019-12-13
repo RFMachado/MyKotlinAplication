@@ -1,6 +1,5 @@
 package com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities
 
-
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

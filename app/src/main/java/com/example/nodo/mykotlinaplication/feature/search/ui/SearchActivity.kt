@@ -9,7 +9,6 @@ import com.example.nodo.mykotlinaplication.R
 import com.example.nodo.mykotlinaplication.Utils.Extensions.hide
 import com.example.nodo.mykotlinaplication.Utils.Extensions.show
 import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
-import com.example.nodo.mykotlinaplication.feature.search.infrastructure.entities.RepositoryPayload
 import com.example.nodo.mykotlinaplication.feature.search.presentation.SearchPresenter
 import com.example.nodo.mykotlinaplication.feature.search.presentation.SearchView
 import com.jakewharton.rxbinding2.widget.RxTextView
@@ -22,7 +21,7 @@ class SearchActivity : AppCompatActivity(), SearchView {
     var items = ArrayList<Repository>()
 
     @Inject
-    lateinit var presenter : SearchPresenter
+    lateinit var presenter: SearchPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +54,7 @@ class SearchActivity : AppCompatActivity(), SearchView {
         throwable.printStackTrace()
     }
 
-    private fun setupRecycler() = with(recyclerView){
+    private fun setupRecycler() = with(recyclerView) {
         layoutManager = LinearLayoutManager(context)
         adapter = SearchAdapter(items)
     }

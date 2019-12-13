@@ -28,7 +28,5 @@ class DownloadPresenter @Inject constructor(private val source: DownloadSource) 
                         { view?.showResult(it) },
                         { view?.showError(it) }
                 )
-
     }
 }
-

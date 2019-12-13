@@ -8,10 +8,8 @@ import com.example.nodo.mykotlinaplication.feature.detail.domain.entities.Downlo
  */
 object DownloadMapper {
 
-    fun map(payload: DownloadPayload) = Download().apply{
+    fun map(payload: DownloadPayload) = Download().apply {
 
         urldonwload = payload.urldonwload
-
     }
-
 }

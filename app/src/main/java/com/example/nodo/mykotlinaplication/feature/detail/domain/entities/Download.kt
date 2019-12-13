@@ -5,6 +5,6 @@ import java.io.Serializable
 /**
  * Created by nodo on 03/11/17.
  */
-class Download : Serializable{
+class Download : Serializable {
     lateinit var urldonwload: String
 }

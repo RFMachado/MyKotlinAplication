@@ -1,6 +1,5 @@
 package com.example.nodo.mykotlinaplication.feature.shared
 
-import com.example.nodo.mykotlinaplication.feature.search.ui.SearchActivity
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.annotations.NonNull
@@ -27,19 +26,19 @@ class LoadingContent<T> : ObservableTransformer<T, T>, SingleTransformer<T, T>, 
     override fun apply(@NonNull upstream: Observable<T>): ObservableSource<T> {
         return upstream
                 .doOnSubscribe { onSubscribe -> showLoading() }
-                .doFinally{ this.hiddenLoading() }
+                .doFinally { this.hiddenLoading() }
     }
 
     override fun apply(@NonNull upstream: Single<T>): SingleSource<T> {
         return upstream
                 .doOnSubscribe { onSubscribe -> showLoading() }
-                .doFinally{ this.hiddenLoading() }
+                .doFinally { this.hiddenLoading() }
     }
 
     override fun apply(@NonNull upstream: Completable): CompletableSource {
         return upstream
                 .doOnSubscribe { onSubscribe -> showLoading() }
-                .doFinally{ this.hiddenLoading() }
+                .doFinally { this.hiddenLoading() }
     }
 
     private fun showLoading() {
@@ -49,5 +48,4 @@ class LoadingContent<T> : ObservableTransformer<T, T>, SingleTransformer<T, T>, 
     private fun hiddenLoading() {
         hide.onNext(Unit)
     }
-
 }

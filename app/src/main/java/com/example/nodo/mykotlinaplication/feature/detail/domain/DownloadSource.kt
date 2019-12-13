@@ -7,6 +7,5 @@ import io.reactivex.Observable
  */
 interface DownloadSource {
 
-        fun fetchMarkdown(login : String, name : String) : Observable<String>
-
+        fun fetchMarkdown(login: String, name: String): Observable<String>
 }

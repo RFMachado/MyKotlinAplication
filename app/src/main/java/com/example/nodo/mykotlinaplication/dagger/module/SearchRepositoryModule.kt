@@ -22,5 +22,4 @@ class SearchRepositoryModule {
     fun provideDownloadSource(downloadInfrastructure: DownloadInfrastructure): DownloadSource {
         return downloadInfrastructure
     }
-
 }

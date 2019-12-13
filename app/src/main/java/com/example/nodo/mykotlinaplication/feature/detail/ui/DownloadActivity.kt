@@ -3,7 +3,6 @@ package com.example.nodo.mykotlinaplication.feature.detail.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.nodo.mykotlinaplication.MyApplication
@@ -14,7 +13,6 @@ import com.example.nodo.mykotlinaplication.feature.detail.presentation.DownloadV
 import com.example.nodo.mykotlinaplication.feature.search.domain.entities.Repository
 import com.example.nodo.mykotlinaplication.feature.detail.presentation.DownloadPresenter
 import kotlinx.android.synthetic.main.activity_download.*
-import us.feras.mdv.MarkdownView
 import javax.inject.Inject
 
 /**
@@ -25,7 +23,7 @@ class DownloadActivity : AppCompatActivity(), DownloadView {
     lateinit var repository: Repository
 
     @Inject
-    lateinit var presenter : DownloadPresenter
+    lateinit var presenter: DownloadPresenter
 
     companion object {
         private val EXTRA_DOWNLOAD = "download"
@@ -45,7 +43,6 @@ class DownloadActivity : AppCompatActivity(), DownloadView {
         repository = intent.getSerializableExtra(EXTRA_DOWNLOAD) as Repository
 
         presenter.fetchMarkdown(repository.login, repository.name)
-
     }
 
     override fun hideLoading() {
@@ -58,7 +55,6 @@ class DownloadActivity : AppCompatActivity(), DownloadView {
 
     override fun showResult(markdown: String) {
         mark_down.loadMarkdown(markdown)
-
     }
 
     override fun showError(throwable: Throwable) {
@@ -67,10 +63,8 @@ class DownloadActivity : AppCompatActivity(), DownloadView {
         throwable.printStackTrace()
     }
 
-
     override fun onDestroy() {
         presenter.unbind()
         super.onDestroy()
     }
-
 }

@@ -7,9 +7,8 @@ import java.io.Serializable
  */
 class Repository : Serializable {
 
-    lateinit var id : String
-    lateinit var login : String
-    lateinit var avatarUrl : String
-    lateinit var name : String
-
+    lateinit var id: String
+    lateinit var login: String
+    lateinit var avatarUrl: String
+    lateinit var name: String
 }
